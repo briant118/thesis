@@ -1,3 +1,51 @@
+/* Page container background */
+.app-container {
+  background-color: #ffffff; /* dark blue */
+  min-height: 100vh;
+}
+
+/* Admin sidebar color theme */
+.sidebar {
+  background-color: #0b1f3a; /* dark blue */
+  color: #e9eef7;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+.sidebar .list-group .list-group-item {
+  background-color: #0b223a !important; /* match sidebar dark blue */
+  color: #e9eef772 !important;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: large;
+  border-top: 1px solid rgba(255, 255, 255, 0.24); /* top divider */
+  border-bottom: 1px solid rgba(0,0,0,0.15); /* bottom divider */
+  border-left: none;
+  border-right: none;
+  transition: background-color .15s ease, color .15s ease;
+}
+.sidebar .list-group .list-group-item:hover,
+.sidebar .list-group .list-group-item:focus {
+  background-color: #f2f4f700 !important; /* dark white */
+  color: #ffb84d !important; /* light orange */
+  border-bottom: 1px solid #ffb84d !important; /* orange underline */
+}
+.sidebar .list-group-item.text-danger {
+  color: #ff9aa2 !important;
+}
+.sidebar .list-group .list-group-item .fa-solid { color: #9ec1ff; }
+.sidebar .list-group .list-group-item:hover .fa-solid,
+.sidebar .list-group .list-group-item:focus .fa-solid { color: #ffb84d; }
+
+/* ensure links don't underline */
+.sidebar .list-group .list-group-item,
+.sidebar .list-group .list-group-item:hover { text-decoration: none; }
+.sidebar .rounded-circle { background-color: #14345f !important; }
+.sidebar .text-muted { color: #b9c7df !important; }
+
+/* Admin profile card */
+.sidebar .profile-box {
+  background: rgba(255,255,255,0.06); /* semi-dark overlay */
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+}
 .loader {
     border: 6px solid #f3f3f3; /* Light gray */
     border-top: 6px solid #3498db; /* Blue */
