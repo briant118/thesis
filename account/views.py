@@ -37,7 +37,7 @@ class EmailPrefixBackend(ModelBackend):
     
 class PrefixLoginView(LoginView):
     authentication_form = forms.PrefixLoginForm
-    template_name = "account/login.html"
+    template_name = "registration/login.html"
     
 
 @login_required

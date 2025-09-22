@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Third-party apps
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'widget_tweaks',
+    # Local apps
+    'main_app',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'PCheck.urls'
+ROOT_URLCONF = 'pcheck_project.urls'
 
 TEMPLATES = [
     {
@@ -75,11 +82,18 @@ WSGI_APPLICATION = 'PCheck.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'thesis',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'PORT': '3306',
+        'HOST': 'localhost',
+    },
+    'secondary': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'secondary.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -115,9 +129,35 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Authentication settings
+AUTHENTICATION_BACKENDS = [
+    'account.views.EmailPrefixBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = 'account:login'
+LOGIN_REDIRECT_URL = 'main_app:pc-list'
+LOGOUT_REDIRECT_URL = 'account:login'
+
+# Crispy Forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# Email (development)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Hosts (development)
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']

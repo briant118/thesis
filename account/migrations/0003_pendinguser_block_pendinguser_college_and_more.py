@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('account', '0002_pendinguser'),
-        ('main_app', '0006_delete_profile'),
+        ('main_app', '0001_initial'),
     ]
 
     operations = [

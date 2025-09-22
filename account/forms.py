@@ -1,13 +1,14 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 from . import models
 
 
-class PrefixLoginForm(forms.Form):
+class PrefixLoginForm(AuthenticationForm):
     username = forms.CharField(
         label="Email Prefix", max_length=150,
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your school ID', 'required': 'required'})
-        )
+    )
     password = forms.CharField(widget=forms.PasswordInput)
 
 
